@@ -52,31 +52,25 @@ selected_industry_choices <- sample(industry_choices, 3)
 # Define UI --------------------------------------------------------------------
 
 ui <- fluidPage(
-  titlePanel(title = "Ask a Manager"),
+  titlePanel(title = "___"),
   sidebarLayout(
     
     # Sidebar panel
     sidebarPanel(
       # Checkbox for selecting industries
-      checkboxGroupInput(
-        inputId = "industry",
-        label = "Select up to 8 industies:",
-        choices = industry_choices,
-        selected = selected_industry_choices
-      )
+      # add code here
     ),
     
     # Main panel
     mainPanel(
-      hr(),
       # Informational text
       "Showing only results for those with salaries in USD who have provided information on their industry and highest level of education completed.",
-      br(), br(),
+      
       # Print number of selected industries
-      textOutput(outputId = "selected_industries"),
-      hr(), br(),
+      # add code here
+      
       # Make a table of filtered data
-      DT::dataTableOutput(outputId = "data")
+      # add code here
     )
   )
 )
@@ -86,26 +80,13 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   
   # Print number of selected industries
-  output$selected_industries <- renderText({
-    paste("You've selected", length(input$industry), "industries.")
-  })
+  # add code here
   
   # Filter data for selected industries
-  manager_survey_filtered <- reactive({
-    manager_survey |>
-      filter(industry_other %in% input$industry)
-    }
-  )
-
+  # add code here
+  
   # Make a table of filtered data
-  output$data <- DT::renderDataTable({
-    manager_survey_filtered() |>
-      select(
-        industry,
-        job_title,
-        annual_salary
-      )
-  })
+  # add code here
   
 }
 

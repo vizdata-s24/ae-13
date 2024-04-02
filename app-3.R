@@ -55,14 +55,14 @@ ui <- fluidPage(
             condition = "input.industry.length <= 8",
             sliderInput(
               inputId = "ylim",
-              label = "Zoom in to salaries between",
+              label = "___",
               min = 0,
               value = c(0, 1000000),
               max = max(manager_survey$annual_salary),
               width = "100%"
             )
           ),
-          plotOutput(outputId = "indiv_salary_plot", brush = "indiv_salary_brush"),
+          plotOutput(outputId = "indiv_salary_plot", brush = "___"),
           tableOutput(outputId = "indiv_salary_table")
         ),
         tabPanel("Data", DT::dataTableOutput(outputId = "data"))
@@ -150,9 +150,7 @@ server <- function(input, output, session) {
   })
   
   # Linked brushing
-  output$indiv_salary_table <- renderTable({
-    brushedPoints(manager_survey_filtered(), input$indiv_salary_brush)
-  })
+  # add code here
   
   # Plot of average salaries from filtered data
   output$avg_salary_plot <- renderPlot({

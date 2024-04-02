@@ -47,13 +47,9 @@ ui <- fluidPage(
       br(),
       tabsetPanel(
         type = "tabs",
-        tabPanel("Average salaries", plotOutput(outputId = "avg_salary_plot")),
-        tabPanel(
-          "Individual salaries", 
-          br(),
-          plotOutput(outputId = "indiv_salary_plot")
-        ),
-        tabPanel("Data", DT::dataTableOutput(outputId = "data"))
+        tabPanel("___", plotOutput(outputId = "___")),
+        tabPanel("___", plotOutput(outputId = "___")),
+        tabPanel("___", DT::dataTableOutput(outputId = "data"))
       )
     )
   )
@@ -95,12 +91,10 @@ server <- function(input, output, session) {
   output$indiv_salary_plot <- renderPlot({
     
     # Validation for number of selected industries
-    validate(
-      need(length(input$industry) <= 8, message = "Please select a maximum of 8 industries.")
-    )
+    # add code here
     
     ggplot(
-      manager_survey_filtered(),
+      ___,
       aes(
         x = highest_level_of_education_completed,
         y = annual_salary,
@@ -126,11 +120,11 @@ server <- function(input, output, session) {
   
   # Plot of average salaries from filtered data
   output$avg_salary_plot <- renderPlot({
-
-    # Validation for number of selected industries
-    validate(need(length(input$industry) <= 8, message = "Please select a maximum of 8 industries."))
     
-    manager_survey_filtered() |>
+    # Validation for number of selected industries
+    # add code here
+    
+    ___ |>
       group_by(industry, highest_level_of_education_completed) |>
       summarise(
         mean_annual_salary = mean(annual_salary, na.rm = TRUE),
